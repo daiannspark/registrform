@@ -107,19 +107,19 @@ class App extends Component {
           {user.isError ? "Error" : (
             <div>
             <p>
-              <i>First Name</i>
+              <i>First Name: </i>
               {user.firstName}
             </p>
             <p>
-              <i>Last Name</i>
-              {user.last}
+              <i>Last Name: </i>
+              {user.lastName}
             </p>
             <p>
-              <i>Email</i>
+              <i>Email: </i>
               {user.email}
             </p>
             <p>
-              <i>Registered</i>
+              <i>Registered: </i>
               {user.createdAt}
             </p>
             </div>
