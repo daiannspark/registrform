@@ -19,7 +19,7 @@ class App extends Component {
     this.setState({ [name]: value });
   };
 
-  onSubmit = event => {
+  onSubmit = async event => {
     event.preventDefault();
 
     let isError = false;
@@ -36,68 +36,95 @@ class App extends Component {
       return;
     }
 
-    registerUser(this.state);
+    const user = await registerUser(this.state);
+    this.setState({ user });
   };
 
   render() {
+    const { user } = this.state;
+    console.log(user);
     return (
       <div>
-        <div className='row'>
-          <div className='col'>
-            <h3>GitLab.com</h3>
-            <p>
-              GitLab.com offers free unlimited (private) repositories and
-              unlimited collaborators.
-            </p>
-            <p>Explore projects on GitLab.com (no login needed)</p>
-            <p>More information about GitLab.com</p>
-            <p>GitLab.com Support Forum</p>
-            <p>GitLab Homepage</p>
-            <p>
-              By signing up for and by signing in to this service you accept
-              our:
-            </p>
-            <p>Privacy policy</p>
-            <p>GitLab.com Terms.</p>
+        {!user ? (
+          <div className='row'>
+            <div className='col'>
+              <h3>GitLab.com</h3>
+              <p>
+                GitLab.com offers free unlimited (private) repositories and
+                unlimited collaborators.
+              </p>
+              <p>Explore projects on GitLab.com (no login needed)</p>
+              <p>More information about GitLab.com</p>
+              <p>GitLab.com Support Forum</p>
+              <p>GitLab Homepage</p>
+              <p>
+                By signing up for and by signing in to this service you accept
+                our:
+              </p>
+              <p>Privacy policy</p>
+              <p>GitLab.com Terms.</p>
+            </div>
+            <div className='col'>
+              <form method='post' onSubmit={this.onSubmit}>
+                <InputGroup
+                  name='firstName'
+                  isError={this.state.is_error_firstName}
+                  labelName='First Name'
+                  eventHandler={this.onChange}
+                />
+                <InputGroup
+                  name='lastName'
+                  labelName='Last Name'
+                  isError={this.state.is_error_lastName}
+                  eventHandler={this.onChange}
+                />
+                <InputGroup
+                  name='email'
+                  labelName='Email'
+                  inputType='email'
+                  isError={this.state.is_error_email}
+                  eventHandler={this.onChange}
+                />
+                <InputGroup
+                  name='emailConfirmation'
+                  labelName='Email confirmation'
+                  isError={this.state.is_error_email}
+                  eventHandler={this.onChange}
+                />
+                <InputGroup
+                  name='password'
+                  labelName='Password'
+                  inputType='password'
+                  isError={this.state.is_error_password}
+                  eventHandler={this.onChange}
+                />
+                <ButtonComponent title='Submit' color='success' size='' />
+              </form>
+            </div>
           </div>
-          <div className='col'>
-            <form method='post' onSubmit={this.onSubmit}>
-              <InputGroup
-                name='firstName'
-                isError={this.state.is_error_firstName}
-                labelName='First Name'
-                eventHandler={this.onChange}
-              />
-              <InputGroup
-                name='lastName'
-                labelName='Last Name'
-                isError={this.state.is_error_lastName}
-                eventHandler={this.onChange}
-              />
-              <InputGroup
-                name='email'
-                labelName='Email'
-                inputType='email'
-                isError={this.state.is_error_email}
-                eventHandler={this.onChange}
-              />
-              <InputGroup
-                name='emailConfirmation'
-                labelName='Email confirmation'
-                isError={this.state.is_error_email}
-                eventHandler={this.onChange}
-              />
-              <InputGroup
-                name='password'
-                labelName='Password'
-                inputType='password'
-                isError={this.state.is_error_password}
-                eventHandler={this.onChange}
-              />
-              <ButtonComponent title='Submit' color='success' size='' />
-            </form>
-          </div>
-        </div>
+        ) : (
+          <div>
+          {user.isError ? "Error" : (
+            <div>
+            <p>
+              <i>First Name</i>
+              {user.firstName}
+            </p>
+            <p>
+              <i>Last Name</i>
+              {user.last}
+            </p>
+            <p>
+              <i>Email</i>
+              {user.email}
+            </p>
+            <p>
+              <i>Registered</i>
+              {user.createdAt}
+            </p>
+            </div>
+          )}</div>
+        )}
       </div>
     );
   }
