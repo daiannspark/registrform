@@ -8,4 +8,12 @@ export const store = createStore(
   composeWithDevTools(applyMiddleware(thunk))
 );
 
+const savedUser = localStorage.getItem("user");
+if (savedUser) {
+    store.dispatch({
+      type: "LOGIN_SUCCESS",
+      payload: {token: savedUser}
+    });
+}
+
 export default store;
