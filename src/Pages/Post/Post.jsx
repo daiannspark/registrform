@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Comment from "../Comment/Comment";
 
 class Post extends Component {
   componentDidMount() {
@@ -6,7 +7,7 @@ class Post extends Component {
   }
 
   render() {
-    return <div>{this.props.post._id}</div>;
+    return <div>{this.props.post._id} <br /> <Comment /></div>;
   }
 }
 
