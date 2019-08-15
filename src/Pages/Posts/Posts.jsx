@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Posts extends Component {
   componentDidMount() {
@@ -7,7 +8,18 @@ class Posts extends Component {
 
   render() {
     const { posts } = this.props;
-    return posts.map(item => <p>{item._id}</p>);
+    return (
+      <ul>
+        {posts.map(item => (
+          <li key={item._id}>
+            <Link to={`/posts/${item._id}`}>
+              <div className='title'>{item.title}</div>
+              <img src={item.media.path} width='300px' height='300px'  alt='' />
+            </Link>
+          </li>
+        ))}
+      </ul>
+    );
   }
 }
 

@@ -7,6 +7,7 @@ class User extends Component {
   }
   render() {
     const { userInfo } = this.props.user;
+    
     if (!userInfo) {
       return <Spinner type='Puff' color='#00BFFF' height='100' width='100' />;
     }

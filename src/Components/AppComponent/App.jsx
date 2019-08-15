@@ -9,6 +9,7 @@ import NotificationSystem from "../NotificationComponent";
 import About from "../../pages/About";
 import Navigation from "../Navigation";
 import PrivateRoute from "../PrivateRoute";
+import Post from "../../pages/Post";
 
 const App = ({ user, logout }) => {
   return (
@@ -22,7 +23,8 @@ const App = ({ user, logout }) => {
           <PrivateRoute path='/' component={Home} exact />
           <PrivateRoute path='/users/self' component={User} />
 
-          <PrivateRoute path='/posts/:postId' component={() => {}} />
+
+          <PrivateRoute path='/posts/:postId' component={Post} />
           <PrivateRoute path='/about/' component={About} />
           <PrivateRoute path='/users/' component={() => {}} />
         </Switch>
