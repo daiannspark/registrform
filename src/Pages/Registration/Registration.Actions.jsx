@@ -5,7 +5,6 @@ const registerUser = user => dispatch => {
   axios
     .post("/api/v1/auth/users", user)
     .then(response => {
-      
       if (response && response.status === 200) {
         dispatch({
           type: "REGISTRATION_SUCCESS",

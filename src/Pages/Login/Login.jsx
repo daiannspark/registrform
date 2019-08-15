@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class Login extends Component {
   state = {
@@ -24,15 +24,17 @@ class Login extends Component {
   };
 
   render() {
-      
     const { user } = this.props;
 
-if (user.token) {
-  return <Redirect to="/" />;
-};
+    if (user.token) {
+      return <Redirect to='/' />;
+    }
 
     return (
-      <form onSubmit={this.onSubmit} className="col-6 ml-auto mr-auto">
+      <form
+        onSubmit={this.onSubmit}
+        className='registration-form col-6 ml-auto mr-auto'
+      >
         <div>
           <label htmlFor=''>Email</label>
           <input

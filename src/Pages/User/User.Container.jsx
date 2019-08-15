@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
-import Login from "./Login";
-import { loginUser } from "./Login.Action";
+import { getSelfInfo } from "./User.Actions";
+import User from "./User";
 
 const stateToProps = state => ({
   user: state.user
@@ -8,5 +8,5 @@ const stateToProps = state => ({
 
 export default connect(
   stateToProps,
-  { loginUser }
-)(Login);
+  { getSelfInfo }
+)(User);

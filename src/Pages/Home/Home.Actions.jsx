@@ -16,7 +16,7 @@ const getPostsList = ({ token }) => dispatch => {
       dispatch(
         error({
           title: "Auth failed, check email or password",
-          message: err.response.data.error,
+          message: err.response.error,
           position: "tc"
         })
       );

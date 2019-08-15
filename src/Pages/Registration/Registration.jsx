@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Redirect} from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class Registration extends Component {
   state = {
@@ -27,12 +27,15 @@ class Registration extends Component {
   render() {
     const { isRegistered } = this.props;
 
-if (isRegistered) {
-  return <Redirect to="/login" />;
-};
+    if (isRegistered) {
+      return <Redirect to='/login' />;
+    }
 
     return (
-      <form onSubmit={this.onSubmit} className="col-6 ml-auto mr-auto">
+      <form
+        onSubmit={this.onSubmit}
+        className='registration-form col-6 ml-auto mr-auto'
+      >
         <div className='form-group'>
           <label htmlFor=''>Username</label>
           <input

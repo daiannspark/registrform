@@ -5,15 +5,12 @@ const loginUser = user => dispatch => {
   axios
     .post("/api/v1/auth/session", user)
     .then(response => {
-      
       if (response && response.status === 200) {
-        
-        const {token} = response.data.payload;
+        const { token } = response.data.payload;
         localStorage.setItem("user", token);
-
         dispatch({
           type: "LOGIN_SUCCESS",
-          payload: {token}
+          payload: { token }
         });
 
         dispatch(
@@ -29,7 +26,7 @@ const loginUser = user => dispatch => {
     .catch(err => {
       dispatch(
         error({
-          title: "Autentification failed, check email for password",
+          title: "Auth failed, check email or password",
           message: err.response.data.error,
           position: "tc"
         })
