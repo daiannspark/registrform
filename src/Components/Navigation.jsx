@@ -16,8 +16,13 @@ const Navigation = ({ user, logout }) => {
           </Link>
         </li>
         <li className='nav-item'>
+          <Link to='/about' className='nav-link'>
+            About
+          </Link>
+        </li>
+        <li className='nav-item'>
           <Link to='/users/self' className='nav-link'>
-            Me
+          My profile
           </Link>
         </li>
       </ul>

@@ -6,6 +6,7 @@ import User from "../../pages/User";
 import Registration from "../../pages/Registration";
 import Login from "../../pages/Login";
 import NotificationSystem from "../NotificationComponent";
+import About from "../../pages/About";
 import Navigation from "../Navigation";
 import PrivateRoute from "../PrivateRoute";
 
@@ -22,7 +23,7 @@ const App = ({ user, logout }) => {
           <PrivateRoute path='/users/self' component={User} />
 
           <PrivateRoute path='/posts/:postId' component={() => {}} />
-          <PrivateRoute path='/about/' component={() => {}} />
+          <PrivateRoute path='/about/' component={About} />
           <PrivateRoute path='/users/' component={() => {}} />
         </Switch>
       </Router>
